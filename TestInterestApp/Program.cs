@@ -1,0 +1,55 @@
+﻿// See https://aka.ms/new-console-template for more information
+Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> INTEREST RATE CALCULATOR APP <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+
+
+// Bruno Saenz - 2/20/2024
+// This is a simple console application that'll intake a principle amount, interest rate and term length.
+Console.WriteLine("Starting Process...");
+Console.WriteLine("Hello, I'm the Interest Rate Calculator Console app.\n\n\n");
+Console.WriteLine("Please provide a principle amount, interest rate and term length respectively. Note: The inputs MUST be greater than zero.");
+
+
+// Prompt user for principle amount
+Console.WriteLine("Please input a principle amount: ");
+
+// Store the input into a variable
+double principleAmount = 0.00;
+principleAmount = Convert.ToDouble( Console.ReadLine());
+
+
+// Prompt user for principle amount
+Console.WriteLine("Please input a interest amount: ");
+
+// Store the input into a variable
+double interestRate = 0.00;
+interestRate = Convert.ToDouble(Console.ReadLine());
+
+// Prompt user for principle amount
+Console.WriteLine("Please input a term length: ");
+
+// Store the input into a variable
+double termLength = 0.00;
+termLength = Convert.ToDouble(Console.ReadLine());
+
+
+
+// Add a 3-5 second sleep to simulate the processing
+Console.WriteLine("\n\nCalculating your total interest... Crunching the numbers...\n\n");
+Thread.Sleep(1500);
+
+// Calculate the interest rate
+
+
+
+// Add a case statement
+// I want the app to support days, weeks, months and years.
+// The app should calculate the amount of interest charges per day, week, month and year.
+
+double total = principleAmount * interestRate * termLength;
+Console.WriteLine("Your total interest is: " + total);
+
+
+Console.WriteLine("Process Ending...");
+
+
+
