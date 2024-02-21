@@ -17,19 +17,21 @@ double principleAmount = 0.00;
 principleAmount = Convert.ToDouble( Console.ReadLine());
 
 
-// Prompt user for principle amount
-Console.WriteLine("Please input a interest amount: ");
+// Prompt user for interest rate
+Console.WriteLine("Please input a interest rate: ");
 
 // Store the input into a variable
 double interestRate = 0.00;
 interestRate = Convert.ToDouble(Console.ReadLine());
 
-// Prompt user for principle amount
+// Prompt user for term length
 Console.WriteLine("Please input a term length: ");
 
 // Store the input into a variable
 double termLength = 0.00;
 termLength = Convert.ToDouble(Console.ReadLine());
+
+// add another prompt for the time unit - days, weeks, months or years.
 
 
 
@@ -44,12 +46,8 @@ Thread.Sleep(1500);
 // Add a case statement
 // I want the app to support days, weeks, months and years.
 // The app should calculate the amount of interest charges per day, week, month and year.
-
 double total = principleAmount * interestRate * termLength;
 Console.WriteLine("Your total interest is: " + total);
 
 
 Console.WriteLine("Process Ending...");
-
-
-
