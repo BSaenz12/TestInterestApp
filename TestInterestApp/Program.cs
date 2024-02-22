@@ -55,7 +55,7 @@ if (validator.IsPositive(termLength) == false)
 
 // add another prompt for the time unit - days, weeks, months or years.
 // Prompt user for term length
-Console.WriteLine("Please input a term unit (permitted characters -> Dd/Ww/Mm/Yy). Days = Dd, Weeks = Ww, etc. : ");
+Console.WriteLine("Please input a term unit Days = Dd, Weeks = Ww, Months = Mm, Years = Yy (permitted characters -> Dd/Ww/Mm/Yy): ");
 string termUnit = string.Empty;
 termUnit = Console.ReadLine();
 
@@ -69,12 +69,21 @@ else if (validator.ValidateDateUnit(termUnit) == false)
     Console.WriteLine("Failure validating the date unit. Please try again.");
 }
 
+TimeProcessor processor = new TimeProcessor();
+TimeUnit timeUnit = processor.DetermineTimeUnit(termUnit);
+
 
 // Add a 3-5 second sleep to simulate the processing
 Console.WriteLine("\n\nCalculating your total interest... Crunching the numbers...\n\n");
 Thread.Sleep(1500);
 
 // Calculate the interest rate
+
+// todo
+// 1. add a function that'll handle the different term units
+// 2. add a function that'll calculate the interest, total amount paid and principal balance throughout the term.
+// 3. add functionality to display the calculations through time.
+//      a. format the output neatly
 
 
 
