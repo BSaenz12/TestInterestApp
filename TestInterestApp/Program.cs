@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using TestInterestApp;
+
 Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> INTEREST RATE CALCULATOR APP <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
 
@@ -8,13 +10,21 @@ Console.WriteLine("Starting Process...");
 Console.WriteLine("Hello, I'm the Interest Rate Calculator Console app.\n\n\n");
 Console.WriteLine("Please provide a principle amount, interest rate and term length respectively. Note: The inputs MUST be greater than zero.");
 
+Validator validator = new();
+
 
 // Prompt user for principle amount
 Console.WriteLine("Please input a principle amount: ");
 
 // Store the input into a variable
 double principleAmount = 0.00;
-principleAmount = Convert.ToDouble( Console.ReadLine());
+principleAmount = Convert.ToDouble(Console.ReadLine());
+
+if (validator.IsPositive(principleAmount) == false)
+{
+    Console.WriteLine("Principle amount should not be negative. Please try again.");
+    Environment.Exit(0);
+}
 
 
 // Prompt user for interest rate
@@ -24,6 +34,12 @@ Console.WriteLine("Please input a interest rate: ");
 double interestRate = 0.00;
 interestRate = Convert.ToDouble(Console.ReadLine());
 
+if (validator.IsPercentage(interestRate) == false)
+{
+    Console.WriteLine("Interest should not be negative, or greater than 1. Please try again.");
+    Environment.Exit(0);
+}
+
 // Prompt user for term length
 Console.WriteLine("Please input a term length: ");
 
@@ -31,8 +47,27 @@ Console.WriteLine("Please input a term length: ");
 double termLength = 0.00;
 termLength = Convert.ToDouble(Console.ReadLine());
 
-// add another prompt for the time unit - days, weeks, months or years.
+if (validator.IsPositive(termLength) == false)
+{
+    Console.WriteLine("Term length should not be negative. Please try again.");
+    Environment.Exit(0);
+}
 
+// add another prompt for the time unit - days, weeks, months or years.
+// Prompt user for term length
+Console.WriteLine("Please input a term unit (permitted characters -> Dd/Ww/Mm/Yy). Days = Dd, Weeks = Ww, etc. : ");
+string termUnit = string.Empty;
+termUnit = Console.ReadLine();
+
+if (string.IsNullOrEmpty(termUnit))
+{
+    Console.WriteLine("Term length should not be empty. Please try again.");
+    Environment.Exit(0);
+}
+else if (validator.ValidateDateUnit(termUnit) == false)
+{
+    Console.WriteLine("Failure validating the date unit. Please try again.");
+}
 
 
 // Add a 3-5 second sleep to simulate the processing
