@@ -1,5 +1,6 @@
 ﻿enum TimeUnit
 {
+    NoUnit,
     Days,
     Weeks,
     Months,
