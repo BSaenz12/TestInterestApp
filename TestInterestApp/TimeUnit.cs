@@ -1,4 +1,4 @@
-﻿enum TimeUnit
+﻿public enum TimeUnit
 {
     NoUnit,
     Days,
