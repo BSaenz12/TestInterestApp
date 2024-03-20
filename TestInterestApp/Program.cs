@@ -28,7 +28,7 @@ if (validator.IsPositive(principleAmount) == false)
 
 
 // Prompt user for interest rate
-Console.WriteLine("Please input a interest rate: ");
+Console.WriteLine("Please input a interest rate (APR/Annual Percentage Rate): ");
 
 // Store the input into a variable
 double interestRate = 0.00;
@@ -56,7 +56,7 @@ if (validator.IsPositive(termLength) == false)
 // add another prompt for the time unit - days, weeks, months or years.
 // Prompt user for term length
 Console.WriteLine("Please input a term unit Days = Dd, Weeks = Ww, Months = Mm, Years = Yy (permitted characters -> Dd/Ww/Mm/Yy): ");
-string termUnit = string.Empty;
+string? termUnit = string.Empty;
 termUnit = Console.ReadLine();
 
 if (string.IsNullOrEmpty(termUnit))
@@ -70,7 +70,7 @@ else if (validator.ValidateDateUnit(termUnit) == false)
 }
 
 TimeProcessor processor = new TimeProcessor();
-TimeUnit timeUnit = processor.DetermineTimeUnit(termUnit);
+TimeUnit timeUnitTest = processor.IdentifyTimeUnit(termUnit);
 
 
 // Add a 3-5 second sleep to simulate the processing
