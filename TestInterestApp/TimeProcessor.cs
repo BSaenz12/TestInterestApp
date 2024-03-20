@@ -8,8 +8,12 @@ namespace TestInterestApp
 {
     public class TimeProcessor
     {
+        public TimeProcessor()
+        {
+            
+        }
 
-        public TimeUnit DetermineTimeUnit(string timeUnit)
+        public TimeUnit IdentifyTimeUnit(string timeUnit)
         {
 
             switch ( timeUnit.ToUpper() )
