@@ -14,15 +14,15 @@ Validator validator = new();
 
 
 // Prompt user for principle amount
-Console.WriteLine("Please input a principle amount: ");
+Console.WriteLine("Please input a principal amount: ");
 
 // Store the input into a variable
-double principleAmount = 0.00;
-principleAmount = Convert.ToDouble(Console.ReadLine());
+double principalAmount = 0.00;
+principalAmount = Convert.ToDouble(Console.ReadLine());
 
-if (validator.IsPositive(principleAmount) == false)
+if (validator.CheckIfInputIsPositive(principalAmount) == false)
 {
-    Console.WriteLine("Principle amount should not be negative. Please try again.");
+    Console.WriteLine("Principal amount should not be negative. Please try again.");
     Environment.Exit(0);
 }
 
@@ -34,7 +34,7 @@ Console.WriteLine("Please input a interest rate (APR/Annual Percentage Rate): ")
 double interestRate = 0.00;
 interestRate = Convert.ToDouble(Console.ReadLine());
 
-if (validator.IsPercentage(interestRate) == false)
+if (validator.CheckIfInputIsPercentage(interestRate) == false)
 {
     Console.WriteLine("Interest should not be negative, or greater than 1. Please try again.");
     Environment.Exit(0);
@@ -47,7 +47,7 @@ Console.WriteLine("Please input a term length: ");
 double termLength = 0.00;
 termLength = Convert.ToDouble(Console.ReadLine());
 
-if (validator.IsPositive(termLength) == false)
+if (validator.CheckIfInputIsPositive(termLength) == false)
 {
     Console.WriteLine("Term length should not be negative. Please try again.");
     Environment.Exit(0);
@@ -69,6 +69,19 @@ else if (validator.ValidateDateUnit(termUnit) == false)
     Console.WriteLine("Failure validating the date unit. Please try again.");
 }
 
+// Prompt user for principle amount
+Console.WriteLine("Please input a payment to principal amount: ");
+
+// Store the input into a variable
+double principalToPaymentAmount = 0.00;
+principalToPaymentAmount = Convert.ToDouble(Console.ReadLine());
+
+if (validator.CheckIfInputIsPositive(principalToPaymentAmount) == false)
+{
+    Console.WriteLine("Payment to principal amount should not be negative. Please try again.");
+    Environment.Exit(0);
+}
+
 TimeProcessor processor = new TimeProcessor();
 TimeUnit timeUnitTest = processor.IdentifyTimeUnit(termUnit);
 
@@ -81,17 +94,30 @@ Thread.Sleep(1500);
 
 // todo
 // 1. add a function that'll handle the different term units
+
 // 2. add a function that'll calculate the interest, total amount paid and principal balance throughout the term.
+var interestCalculator = new InterestCalculator();
+
+Double testIntRate = interestCalculator.CalculateInterestRate(timeUnitTest, interestRate, termLength);
+
 // 3. add functionality to display the calculations through time.
 //      a. format the output neatly
+interestCalculator.PrintInterestRates(timeUnitTest, principalAmount, testIntRate,
+    termLength, principalToPaymentAmount);
+
+// As of 10/12/2024
+// Need to refine the principal amount logic/functionality.
+// Need to pay the loan in its entirety.
 
 
 
 // Add a case statement
 // I want the app to support days, weeks, months and years.
 // The app should calculate the amount of interest charges per day, week, month and year.
-double total = principleAmount * interestRate * termLength;
-Console.WriteLine("Your total interest is: " + total);
+
+
+//double total = principalAmount * interestRate * termLength;
+//Console.WriteLine("Your total interest is: " + total);
 
 
 Console.WriteLine("Process Ending...");
