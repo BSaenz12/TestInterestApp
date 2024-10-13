@@ -11,15 +11,15 @@ namespace TestInterestApp
     {
         // todo
         // 1. add a validator function to ensure the values are positive
-        public bool IsPositive(double numberToCheck)
+        public bool CheckIfInputIsPositive(double numberToCheck)
         {
             return numberToCheck > 0;
         }
 
         // 2. add a validator function to ensure the interest rate is a percentage
-        public bool IsPercentage(double numberToCheck)
+        public bool CheckIfInputIsPercentage(double numberToCheck)
         {
-            return IsPositive( numberToCheck) && numberToCheck < 1;
+            return CheckIfInputIsPositive( numberToCheck) && numberToCheck < 1;
         }
 
         // 3. add a validator function that checks if the term length is not greater than 100 years
